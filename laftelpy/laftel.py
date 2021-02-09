@@ -1,6 +1,6 @@
 from typing import Optional
 from aiohttp.typedefs import LooseHeaders
-from laftelpy.laftelclass import Search
+from laftelpy.search import Search
 from laftelpy.http import LaftelRequester
 
 
