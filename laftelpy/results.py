@@ -1,8 +1,9 @@
-from typing import Optional
+from typing import Any, Optional
 
 
 class Results:
     def __init__(self, **data) -> None:
+        self.data = data
         self.__id = data.pop("id", None)
         self.__name = data.pop("name", None)
         self.__img = data.pop("img", None)
@@ -20,7 +21,7 @@ class Results:
         self.__is_viewing = data.pop("is_viewing", False)
         self.__latest_episode_created = data.pop("latest_episode_created", None)
 
-    def to_dict(self):
+    def to_dict(self) -> dict[str, Any]:
         return {
             "id": self.id,
             "name": self.name,
@@ -71,7 +72,7 @@ class Results:
         return self.__home_cropped_img
 
     @property
-    def is_adult(self) -> Optional[str]:
+    def is_adult(self) -> Optional[bool]:
         return self.__is_adult
 
     @property
@@ -107,5 +108,5 @@ class Results:
         return self.__is_viewing
 
     @property
-    def latest_episode_created(self) -> Optional[bool]:
+    def latest_episode_created(self) -> Optional[str]:
         return self.__latest_episode_created

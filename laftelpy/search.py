@@ -4,6 +4,7 @@ from typing import Any, Optional
 
 class Search:
     def __init__(self, **data) -> None:
+        self.data = data
         self.__count = data.pop("count", None)
         self.__results = data.pop("results", [])
         self.__next = data.pop("next", None)
@@ -17,12 +18,21 @@ class Search:
 
     @property
     def count(self) -> Optional[int]:
+        """
+        Return total
+        """
         return self.__count
 
     @property
     def results(self) -> list[Results]:
+        """
+        Return results list
+        """
         return [Results(**result) for result in self.__results]
 
     @property
     def next(self) -> Optional[str]:
+        """
+        Return next search url
+        """
         return self.__next

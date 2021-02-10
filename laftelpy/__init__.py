@@ -1,3 +1,3 @@
-from laftelpy.laftel import Client
+from laftelpy.client import Client
 
 __all__ = ["Client"]
