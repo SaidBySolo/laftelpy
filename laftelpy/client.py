@@ -7,7 +7,7 @@ from laftelpy.http import LaftelRequester
 
 
 class Client(LaftelRequester):
-    def __init__(self, headers: Optional[LooseHeaders] = {"laftel": "TeJava"}) -> None:
+    def __init__(self, headers: LooseHeaders = {"laftel": "TeJava"}) -> None:
         super().__init__(headers=headers)
 
     async def search(self, keyword: str):

@@ -1,11 +1,11 @@
 from laftelpy.error import HTTPException
-from typing import Any, Optional
+from typing import Any
 import aiohttp
 from aiohttp.typedefs import LooseHeaders
 
 
 class LaftelRequester:
-    def __init__(self, headers: Optional[LooseHeaders] = {"laftel": "TeJava"}) -> None:
+    def __init__(self, headers: LooseHeaders = {"laftel": "TeJava"}) -> None:
         self.headers = headers
 
     async def request(self, path: str, **kwargs) -> dict[str, Any]:
