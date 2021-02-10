@@ -1,5 +1,5 @@
-from typing import Any, Callable, Optional, get_args
 from inspect import getfullargspec
+from typing import Any, Callable, Optional, get_args
 
 
 def convert_params(param_value: Optional[bool]) -> Optional[str]:

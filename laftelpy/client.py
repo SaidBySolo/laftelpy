@@ -1,14 +1,20 @@
-from laftelpy.utils import check_arg, compare, convert_params, join_params
-from laftelpy.typing import BRANDS, GENRES, MEDIUM, PRODUCTION, SORT, TAGS, YEARS
 from typing import Optional
+
 from aiohttp.typedefs import LooseHeaders
-from laftelpy.search import Search
+
 from laftelpy.http import LaftelRequester
+from laftelpy.results import Results
+from laftelpy.search import Search
+from laftelpy.typing import BRANDS, GENRES, MEDIUM, PRODUCTION, SORT, TAGS, YEARS
+from laftelpy.utils import check_arg, compare, convert_params, join_params
 
 
 class Client(LaftelRequester):
     def __init__(self, headers: LooseHeaders = {"laftel": "TeJava"}) -> None:
         super().__init__(headers=headers)
+
+    async def daily(self):
+        return [Results(**result) for result in await self.get_daily()]
 
     async def search(self, keyword: str):
         return Search(**await self.get_search({"keyword": keyword}))

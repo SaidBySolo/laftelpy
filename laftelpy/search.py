@@ -1,5 +1,6 @@
-from laftelpy.results import Results
 from typing import Any, Optional
+
+from laftelpy.results import Results
 
 
 class Search:
