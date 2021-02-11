@@ -40,13 +40,18 @@ def check_arg(
         a = get_args(a)
         if isinstance(l, str):
             if l not in a:
+                if len(a) == 2:
+                    a = list(get_args(get_args(a[0])[0]))
+                    raise ValueError(
+                        f"Expected a list but got a string.\nExpected argument: {a}\nArguments received: '{l}'"
+                    )
                 raise ValueError(
-                    f"The arguments do not match. Expected argument: {a} Arguments received: '{l}'"
+                    f"The arguments do not match.\nExpected argument: {a}\nArguments received: '{l}'"
                 )
 
         if isinstance(l, list):
-            a = get_args(a[0])
+            a = list(get_args(get_args(a[0])[0]))
             if between := tuple((set(l) - set(a))):
                 raise ValueError(
-                    f"The arguments do not match. Expected argument: {a} Arguments received: {between}"
+                    f"The arguments do not match.\nExpected argument: {a}\nArguments received: {list(between)}"
                 )
