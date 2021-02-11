@@ -4,7 +4,7 @@ from laftelpy.results import Results
 
 
 class Search:
-    def __init__(self, **data) -> None:
+    def __init__(self, **data: Any) -> None:
         self.data = data
         self.__count = data.pop("count", None)
         self.__results = data.pop("results", [])

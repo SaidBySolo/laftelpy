@@ -57,8 +57,8 @@ class Client(LaftelRequester):
             "production": production,
             "medium": medium,
             "brands": brands,
-            "size": size,
-            "offset": offset,
+            "size": str(size),
+            "offset": str(offset),
         }
 
         return Search(**await self.get_discover(join_params(params)))

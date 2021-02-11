@@ -1,4 +1,4 @@
-from typing import Literal, TypedDict
+from typing import Literal, Optional, TypedDict, Union
 
 
 class ResultsDict(TypedDict):
@@ -179,3 +179,20 @@ PRODUCTION = Literal[
 MEDIUM = Literal["TVA", "극장판", "OVA"]
 
 BRANDS = Literal["애니맥스 플러스", "애니플러스", "KTH", "대원", "카툰 네트워크", "기타"]
+
+CompareList = Union[list[GENRES], list[TAGS]]
+
+SearchParameters = dict[
+    str,
+    Optional[
+        Union[
+            str,
+            list[GENRES],
+            list[TAGS],
+            list[YEARS],
+            list[PRODUCTION],
+            list[MEDIUM],
+            list[BRANDS],
+        ]
+    ],
+]

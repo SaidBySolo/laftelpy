@@ -2,7 +2,7 @@ from typing import Any, Optional
 
 
 class Results:
-    def __init__(self, **data) -> None:
+    def __init__(self, **data: Any) -> None:
         self.data = data
         self.__id = data.pop("id", None)
         self.__name = data.pop("name", None)
